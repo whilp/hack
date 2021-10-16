@@ -14,3 +14,6 @@ jobs:
         uses: denoland/setup-deno@main
         with:
           deno-version: 1.x
+
+      - name: Test
+        run: deno test --config tsconfig.json extension.ts
