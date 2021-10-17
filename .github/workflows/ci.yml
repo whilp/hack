@@ -17,3 +17,6 @@ jobs:
 
       - name: Test
         run: deno test --config tsconfig.json extension.ts
+
+      - name: Bundle
+        run: deno bundle --config tsconfig.json extension.ts extension.js
