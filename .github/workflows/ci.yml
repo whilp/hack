@@ -21,8 +21,5 @@ jobs:
       - name: Bundle
         run: deno bundle --config tsconfig.json extension.ts extension.js
 
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: extension
-          path: extension.js
+      - name: Release
+        run: deno run --allow-env release.ts
