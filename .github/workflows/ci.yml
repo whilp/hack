@@ -22,4 +22,5 @@ jobs:
         run: deno bundle --config tsconfig.json extension.ts extension.js
 
       - name: Release
-        run: deno run --allow-env --unstable release.ts
+        # --no-check: https://github.com/octokit/octokit.js/issues/2075#issuecomment-830350826
+        run: deno run --no-check --allow-env --unstable release.ts
