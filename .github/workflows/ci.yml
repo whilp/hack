@@ -23,4 +23,6 @@ jobs:
 
       - name: Release
         # --no-check: https://github.com/octokit/octokit.js/issues/2075#issuecomment-830350826
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: deno run --no-check --allow-env --unstable release.ts
