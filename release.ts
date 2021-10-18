@@ -1,7 +1,8 @@
 import {
   getOctokit,
   context,
-} from "https://cdn.skypack.dev/@actions/github?dts";
+} from "https://esm.sh/@actions/github";
+// "https://cdn.skypack.dev/@actions/github?dts";
 
 const env = Deno.env.toObject();
 
