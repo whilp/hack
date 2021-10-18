@@ -1,6 +1,7 @@
 import { getOctokit, context } from "https://esm.sh/@actions/github";
 
-const github = getOctokit(context.token);
+const env = Deno.env.toObject();
+const github = getOctokit(env.GITHUB_TOKEN);
 const { owner: currentOwner, repo: currentRepo } = context.repo;
 
 const createReleaseResponse = await github.repos.createRelease({
