@@ -29,7 +29,7 @@ jobs:
           DENO_INSTALL_ROOT=$PWD/bin
           echo DENO_INSTALL_ROOT="$DENO_INSTALL_ROOT" >> $GITHUB_ENV
           echo "$DENO_INSTALL_ROOT" >> $GITHUB_PATH
-          deno install --no-check --location $GITHUB_API_URL --allow-env --unstable release.ts
+          deno install --no-check --location $GITHUB_API_URL --allow-env --allow-net --unstable release.ts
 
       - run: release
         env:
