@@ -18,10 +18,10 @@ jobs:
       # - name: Test
       #   run: deno test --config tsconfig.json extension.ts
 
-      # - run: deno fmt
+      - run: deno fmt
 
-      # - name: Bundle
-      #   run: deno bundle --config tsconfig.json extension.ts extension.js
+      - name: Bundle
+        run: deno bundle --config tsconfig.json extension.ts extension.js
 
       # --no-check: https://github.com/octokit/octokit.js/issues/2075#issuecomment-830350826
       - name: Run deno install
@@ -31,6 +31,9 @@ jobs:
           echo "$DENO_INSTALL_ROOT" >> $GITHUB_PATH
           deno install --no-check --location $GITHUB_API_URL --allow-env --allow-net --unstable release.ts
 
-      - run: release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          draft: true
+          files: |
+            extension.js
