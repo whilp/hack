@@ -23,7 +23,7 @@ jobs:
       #   run: deno bundle --config tsconfig.json extension.ts extension.js
 
       # --no-check: https://github.com/octokit/octokit.js/issues/2075#issuecomment-830350826
-      - name: install
+      - name: Run deno install
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
