@@ -3,28 +3,28 @@ name: ci
 on: [push, pull_request]
 env:
   NO_COLOR: yes
+  DENO_INSTALL_ROOT: bin
 
 jobs:
   build:
     runs-on: ubuntu-latest
     name: ci
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Setup Deno
-        uses: denoland/setup-deno@main
+      - uses: denoland/setup-deno@main
         with:
           deno-version: 1.x
 
-      - name: Test
-        run: deno test --config tsconfig.json extension.ts
+      # - name: Test
+      #   run: deno test --config tsconfig.json extension.ts
 
-      - name: Bundle
-        run: deno bundle --config tsconfig.json extension.ts extension.js
+      # - name: Bundle
+      #   run: deno bundle --config tsconfig.json extension.ts extension.js
 
-      - name: Release
-        # --no-check: https://github.com/octokit/octokit.js/issues/2075#issuecomment-830350826
+      # --no-check: https://github.com/octokit/octokit.js/issues/2075#issuecomment-830350826
+      - name: install
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: deno run --no-check --allow-env --unstable release.ts
+        run: |
+          deno install --no-check --allow-env --unstable release.ts
