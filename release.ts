@@ -5,7 +5,7 @@ const env = Deno.env.toObject();
 const github = getOctokit(env.GITHUB_TOKEN);
 
 const githubRepository: string = env.GITHUB_REPOSITORY;
-const repo,
+var repo,
   owner = githubRepository.split("/", 1);
 
 const createReleaseResponse = await github.repos.createRelease({
