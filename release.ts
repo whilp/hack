@@ -1,4 +1,4 @@
-import { getOctokit } from "https://esm.sh/@actions/github";
+import github from "./deps.ts";
 
 const env = Deno.env.toObject();
 
@@ -7,9 +7,9 @@ const githubRepository: string = env.GITHUB_REPOSITORY;
 var repo,
   owner = githubRepository.split("/", 2);
 
-const github = getOctokit(env.GITHUB_TOKEN);
+const gh = github.getOctokit(env.GITHUB_TOKEN);
 
-const createReleaseResponse = await github.rest.repos.createRelease({
+const createReleaseResponse = await gh.rest.repos.createRelease({
   owner,
   repo,
   tag_name: "test",

@@ -3,7 +3,6 @@ name: ci
 on: [push, pull_request]
 env:
   NO_COLOR: yes
-  DENO_INSTALL_ROOT: bin
 
 jobs:
   build:
@@ -27,4 +26,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          DENO_INSTALL_ROOT=$PWD/bin
+          echo DENO_INSTALL_ROOT="$DENO_INSTALL_ROOT" >> $GITHUB_ENV
+          echo "$DENO_INSTALL_ROOT" >> $GITHUB_PATH
           deno install --no-check --allow-env --unstable release.ts
+
+      - run: release
