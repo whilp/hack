@@ -21,7 +21,7 @@ jobs:
       - run: deno fmt
 
       - name: Bundle
-        run: deno bundle --config tsconfig.json extension.ts extension.js
+        run: deno bundle --no-check --config tsconfig.json extension.ts extension.js
 
       # --no-check: https://github.com/octokit/octokit.js/issues/2075#issuecomment-830350826
       - name: Run deno install
