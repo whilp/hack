@@ -1,4 +1,4 @@
-import github from "./deps.ts";
+import { github } from "./deps.ts";
 
 const env = Deno.env.toObject();
 
