@@ -8,6 +8,8 @@ const githubRepository: string = env.GITHUB_REPOSITORY;
 var repo,
   owner = githubRepository.split("/", 1);
 
+console.log(repo, owner);
+
 const createReleaseResponse = await github.repos.createRelease({
   owner,
   repo,
