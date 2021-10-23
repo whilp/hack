@@ -32,7 +32,7 @@ jobs:
           deno install --no-check --location $GITHUB_API_URL --allow-env --allow-net --unstable release.ts
 
       - uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        # if: startsWith(github.ref, 'refs/tags/')
         with:
           draft: true
           files: |
