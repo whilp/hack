@@ -6,7 +6,7 @@ const github = getOctokit(env.GITHUB_TOKEN);
 
 const githubRepository: string = env.GITHUB_REPOSITORY;
 var repo,
-  owner = githubRepository.split("/", 1);
+  owner = githubRepository.split("/", 2);
 
 console.log(repo, owner);
 
