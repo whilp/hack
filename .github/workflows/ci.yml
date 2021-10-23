@@ -25,8 +25,6 @@ jobs:
 
       # --no-check: https://github.com/octokit/octokit.js/issues/2075#issuecomment-830350826
       - name: Run deno install
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           DENO_INSTALL_ROOT=$PWD/bin
           echo DENO_INSTALL_ROOT="$DENO_INSTALL_ROOT" >> $GITHUB_ENV
@@ -34,3 +32,5 @@ jobs:
           deno install --no-check --allow-env --unstable release.ts
 
       - run: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
