@@ -18,6 +18,8 @@ jobs:
       # - name: Test
       #   run: deno test --config tsconfig.json extension.ts
 
+      # - run: deno fmt
+
       # - name: Bundle
       #   run: deno bundle --config tsconfig.json extension.ts extension.js
 
